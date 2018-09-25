@@ -27,5 +27,11 @@ class TencentHrItem(scrapy.Item):
     address = scrapy.Field()
     time = scrapy.Field()
 
+class DouyuItem(scrapy.Item):
+    name = scrapy.Field()
+    image_urls = scrapy.Field()
+    # two
+    src_link = scrapy.Field()
+
 
 
