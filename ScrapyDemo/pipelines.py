@@ -32,16 +32,18 @@ class ScrapydemoPipeline(object):
 
 class TencentHrPipeline(object):
 
-	def open_spider(self, spider):
-		self.fo = open('../data/tencenHr.json', 'w', encoding='utf-8')
-
+	# def open_spider(self, spider):
+	# 	self.fo = open('../data/tencenHr.json', 'w', encoding='utf-8')
+	#
+	# def process_item(self, item, spider):
+	# 	content = json.dumps(dict(item), ensure_ascii=False) + ",\n"
+	# 	self.fo.write(content)
+	# 	return item
+	#
+	# def close_spider(self, spider):
+	# 	self.fo.close()
 	def process_item(self, item, spider):
-		content = json.dumps(dict(item), ensure_ascii=False) + ",\n"
-		self.fo.write(content)
-		return item
-
-	def close_spider(self, spider):
-		self.fo.close()
+		pass
 
 
 class DouyuPipeline(ImagesPipeline):
