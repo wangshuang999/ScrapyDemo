@@ -15,18 +15,19 @@ from scrapy.pipelines.images import ImagesPipeline
 class ScrapydemoPipeline(object):
 
 	#.json	.json1	.csv	.xml
-    def __init__(self):
-        self.fo = open('../data/itcast.json', 'w', encoding='utf-8')
-
-    # 处理爬虫parse方法返回的数据
-    def process_item(self, item, spider):
-        content = json.dumps(dict(item), ensure_ascii=False) + ',\n'
-        self.fo.write(content)
-        return item
-
-    def close_spider(self,spider):
-        self.fo.close()
-
+    # def __init__(self):
+    #     self.fo = open('../data/itcast.json', 'w', encoding='utf-8')
+    #
+    # # 处理爬虫parse方法返回的数据
+    # def process_item(self, item, spider):
+    #     content = json.dumps(dict(item), ensure_ascii=False) + ',\n'
+    #     self.fo.write(content)
+    #     return item
+    #
+    # def close_spider(self,spider):
+    #     self.fo.close()
+	def process_item(self, item, spider):
+		pass
 
 
 
