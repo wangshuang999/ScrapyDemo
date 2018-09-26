@@ -27,7 +27,7 @@ class ScrapydemoPipeline(object):
     # def close_spider(self,spider):
     #     self.fo.close()
 	def process_item(self, item, spider):
-		pass
+		return item
 
 
 
@@ -44,7 +44,7 @@ class TencentHrPipeline(object):
 	# def close_spider(self, spider):
 	# 	self.fo.close()
 	def process_item(self, item, spider):
-		pass
+		return item
 
 
 class DouyuPipeline(ImagesPipeline):
