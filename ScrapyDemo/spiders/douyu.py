@@ -69,4 +69,4 @@ class DouyuSpider(scrapy.Spider):
         if len(data_list) == self.limit:
             self.offset += self.limit
             yield scrapy.Request("http://capi.douyucdn.cn/api/v1/getVerticalRoom?limit=" + str(self.limit)
-                           + "&offset=" + str(self.offset), callback=self.parse, dont_filter=True)
+                           + "&offset=" + str(self.offset), callback=self.parse, dont_filter=True)   #不去重

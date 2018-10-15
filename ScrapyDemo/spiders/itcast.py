@@ -17,10 +17,10 @@ class ItcastSpider(scrapy.Spider):
 
     def parse(self, response):
         # pass
+
         node_list = response.xpath("//div[@class='li_txt']")
 
-        for node  in node_list:
-
+        for node in node_list:
             item = ItcastItem()
             name = node.xpath('./h3/text()').extract()
             level = node.xpath('./h4/text()').extract()
@@ -31,4 +31,3 @@ class ItcastSpider(scrapy.Spider):
             item['info'] = info[0]
 
             yield item
-

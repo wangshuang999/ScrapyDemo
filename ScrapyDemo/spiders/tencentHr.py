@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import scrapy
+from scrapy import cmdline
 
 from ScrapyDemo.items import TencentHrItem
-
 
 class TencenthrSpider(scrapy.Spider):
     name = 'tencentHr'
@@ -13,6 +13,7 @@ class TencenthrSpider(scrapy.Spider):
         }
     }
     start_urls = ['https://hr.tencent.com/position.php?start=0#a']
+
 
     def parse(self, response):
         node_list = response.xpath("//tr[@class='even']|//tr[@class='odd']")
@@ -43,3 +44,6 @@ class TencenthrSpider(scrapy.Spider):
 
         # return itemList
 
+
+if __name__ == '__main__':
+    cmdline.execute("scrapy crawl tencentHr".split())

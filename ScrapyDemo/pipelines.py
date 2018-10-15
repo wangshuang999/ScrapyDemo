@@ -4,6 +4,7 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
+import datetime
 import json
 
 import os
@@ -12,22 +13,35 @@ from ScrapyDemo.settings import IMAGES_STORE
 from scrapy.pipelines.images import ImagesPipeline
 
 
+
+checkFlag = './ScrapyDemo/data/RunningFlag.txt'
+
+
 class ScrapydemoPipeline(object):
 
 	#.json	.json1	.csv	.xml
-    # def __init__(self):
-    #     self.fo = open('../data/itcast.json', 'w', encoding='utf-8')
-    #
-    # # 处理爬虫parse方法返回的数据
-    # def process_item(self, item, spider):
-    #     content = json.dumps(dict(item), ensure_ascii=False) + ',\n'
-    #     self.fo.write(content)
-    #     return item
-    #
-    # def close_spider(self,spider):
-    #     self.fo.close()
-	def process_item(self, item, spider):
-		return item
+    def __init__(self):
+		# main执行
+        curtime = datetime.datetime.now().strftime('%H%M%S')
+        self.fo = open( './ScrapyDemo/data/'+curtime+'itcast.json', 'w', encoding = 'utf-8' )
+		
+        # self.fo = open('./data/itcast.json', 'w', encoding='utf-8')
+    def open_spider(self, spider):
+        self.runningflag = open(checkFlag, 'w')
+        self.runningflag.close()
+
+
+    # 处理爬虫parse方法返回的数据
+    def process_item(self, item, spider):
+        content = json.dumps(dict(item), ensure_ascii=False) + ',\n'
+        self.fo.write(content)
+        return item
+
+    def close_spider(self,spider):
+        self.fo.close()
+        if os.path.exists(checkFlag):
+            os.remove(checkFlag)
+
 
 
 
@@ -81,13 +95,19 @@ class DouyuPipeline(ImagesPipeline):
 		return scrapy.Request(src_link)
 
 
+class CrawlSpiderTestPipeline(object):
+	# .json	.json1	.csv	.xml
+	def __init__( self ):
+		self.fo = open( '../data/58fzgl.json', 'w', encoding = 'utf-8' )
 
+	# 处理爬虫parse方法返回的数据
+	def process_item( self, item, spider ):
+		content = json.dumps( dict( item ), ensure_ascii = False ) + ',\n'
+		self.fo.write( content )
+		return item
 
-
-
-
-
-
+	def close_spider( self, spider ):
+		self.fo.close()
 
 
 

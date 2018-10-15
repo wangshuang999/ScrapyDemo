@@ -34,4 +34,9 @@ class DouyuItem(scrapy.Item):
     src_link = scrapy.Field()
 
 
+class CrawlSpiderTestItem(scrapy.Item):
+    saler = scrapy.Field()
+    info = scrapy.Field()
+
+
 

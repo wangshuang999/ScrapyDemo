@@ -921,3 +921,15 @@ IMAGES_STORE = 'D:\\CodeStudy\\Python\\ScrapyDemo\\ScrapyDemo\\data\\images\\'
 # # 可选的级别有: CRITICAL、 ERROR、WARNING、INFO、DEBUG
 # LOG_LEVEL='DEBUG'
 # LOG_FILE="../../scrapy.log"
+
+
+# # mongodb连接配置
+# MONHOST = '192.168.6.24'
+# MONPORT = 27017
+# MONDB = 'mydb' #库名
+# COLLECTION = 'host' #表名
+
+
+# # dupeFilter去重处理
+# DUPEFILTER_CLASS='ScrapyDemo.filter.DupeFilter'
+# DUPEFILTER_DEBUG=False
